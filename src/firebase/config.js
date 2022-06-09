@@ -17,7 +17,7 @@ initializeApp(firebaseConfig);
 
 // init individual services
 const db = getFirestore();
-const fbAuth = getAuth();
-const fbStorage = getStorage();
+const Auth = getAuth();
+const Storage = getStorage();
 
-export { db, fbAuth, fbStorage };
+export { db, Auth, Storage };

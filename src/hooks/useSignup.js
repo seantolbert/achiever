@@ -1,59 +1,21 @@
-import { useState, useEffect } from 'react'
-import { projectAuth, projectStorage, projectFirestore } from '../firebase/config'
-import { useAuthContext } from './useAuthContext'
+import { useState } from "react";
+
+import { Auth } from "../firebase/config";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 
 export const useSignup = () => {
-  const [isCancelled, setIsCancelled] = useState(false)
-  const [error, setError] = useState(null)
-  const [isPending, setIsPending] = useState(false)
-  const { dispatch } = useAuthContext()
+  const [error, setError] = useState(null);
 
-  const signup = async (email, password, displayName, thumbnail) => {
-    setError(null)
-    setIsPending(true)
-  
-    try {
-      // signup
-      const res = await projectAuth.createUserWithEmailAndPassword(email, password)
-
-      if (!res) {
-        throw new Error('Could not complete signup')
-      }
-
-      // upload user thumbnail
-      const uploadPath = `thumbnails/${res.user.uid}/${thumbnail.name}`
-      const img = await projectStorage.ref(uploadPath).put(thumbnail)
-      const imgUrl = await img.ref.getDownloadURL()
-
-      // add display name to user
-      await res.user.updateProfile({ displayName, photoURL: imgUrl })
-
-      // create the user document
-      await projectFirestore.collection('users').doc(res.user.uid).set({
-        online: true,
-        displayName,
-        photoURL: imgUrl
+  const signup = (email, password) => {
+    setError(null);
+    createUserWithEmailAndPassword(Auth, email, password)
+      .then((res) => {
+        console.log('user signup up: ', res.user)
       })
-
-      // dispatch login action
-      dispatch({ type: 'LOGIN', payload: res.user })
-
-      if (!isCancelled) {
-        setIsPending(false)
-        setError(null)
-      }
-    } 
-    catch(err) {
-      if (!isCancelled) {
+      .catch((err) => {
         setError(err.message)
-        setIsPending(false)
-      }
-    }
-  }
+      })
+  };
 
-  useEffect(() => {
-    return () => setIsCancelled(true)
-  }, [])
-
-  return { signup, error, isPending }
-}
+  return { error, signup };
+};
