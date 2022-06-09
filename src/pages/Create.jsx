@@ -1,10 +1,12 @@
 import { useState } from "react";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 import { db } from "../firebase/config";
 import { addDoc, collection } from "firebase/firestore";
 
 export default function Create() {
   const [newAch, setNewAch] = useState("");
+  const { user } = useAuthContext();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -13,6 +15,7 @@ export default function Create() {
 
     await addDoc(ref, {
       title: newAch,
+      uid: user.uid,
     });
 
     setNewAch("");
