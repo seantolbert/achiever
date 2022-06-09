@@ -1,23 +1,14 @@
-import { useState, useEffect } from "react";
 import AchList from "../components/AchList";
 
-import { db } from "../firebase/config";
-import { collection, getDocs } from "firebase/firestore";
+import { useCollection } from "../hooks/useCollection";
 
 export default function Dashboard() {
-  const [ach, setAch] = useState(null);
+  const { documents: achs } = useCollection("achievements");
 
-  useEffect(() => {
-    const ref = collection(db, "achievements");
-
-    getDocs(ref).then((snapshot) => {
-      let results = [];
-      snapshot.docs.forEach((doc) => {
-        results.push({ id: doc.id, ...doc.data() });
-      });
-      setAch(results);
-    });
-  }, []);
-
-  return <div>{ach && <AchList ach={ach} />}</div>;
+  return (
+    <div>
+      <h1>Dashboard</h1>
+      {achs && <AchList achs={achs} />}
+    </div>
+  );
 }
