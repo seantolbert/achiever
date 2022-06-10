@@ -1,9 +1,14 @@
 import AchList from "../components/AchList";
 
 import { useCollection } from "../hooks/useCollection";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 export default function Dashboard() {
-  const { documents: achs } = useCollection("achievements");
+  const { user } = useAuthContext();
+  const { documents: achs } = useCollection(
+      'achievements',
+      ['uid', '==', user.uid]
+  )
 
   return (
     <div>
