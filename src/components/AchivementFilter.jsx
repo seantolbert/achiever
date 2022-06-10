@@ -1,4 +1,4 @@
-const filterList = ["all", "repo", "app", "post", "ytcourse", "udemycourse"];
+const filterList = ["All", "Repo", "App", "Post", "Course"];
 
 export default function AchivementFilter({ currentFilter, changeFilter }) {
   const handleClick = (newFilter) => {

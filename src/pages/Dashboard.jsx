@@ -16,17 +16,16 @@ export default function Dashboard() {
   const changeFilter = (newFilter) => {
     setCurrentFilter(newFilter);
   };
-console.log(currentFilter)
+  console.log(currentFilter);
   const achievements = achs
     ? achs.filter((ach) => {
         switch (currentFilter) {
           case "all":
             return true;
-          case "ytcourse":
-          case "udemycourse":
-          case "repo":
-          case "app":
-          case "post":
+          case "Course":
+          case "Repo":
+          case "App":
+          case "Post":
             console.log(achs.category, currentFilter);
             return ach.category === currentFilter;
           default:

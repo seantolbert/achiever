@@ -8,14 +8,17 @@ export default function Card({ ach }) {
     const docRef = doc(db, "achievements", id);
     await deleteDoc(docRef);
   };
+
   return (
-    <div>
-      {ach.title}
-      {ach.tstamp}
-      {ach.details}
-      {ach.hyplink}
-      {ach.category}
-      <FontAwesomeIcon icon={faX} onClick={() => handleClick(ach.id)} />
-    </div>
+    <>
+      <div>
+        {ach.title}
+        {ach.tstamp}
+        {ach.details}
+        {ach.hyplink}
+        {ach.category}
+        <FontAwesomeIcon icon={faX} onClick={() => handleClick(ach.id)} />
+      </div>
+    </>
   );
 }
