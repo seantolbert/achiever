@@ -1,20 +1,15 @@
-import { db } from "../firebase/config"
-import {doc, deleteDoc} from 'firebase/firestore'
+import Card from "./Card";
 
-export default function AchList({achs}) {
-    const handleClick = async (id) => {
-        // console.log(id)
-        const docRef = doc(db, 'achievements', id)
-        await deleteDoc(docRef)
-    }
-
+export default function AchList({ achs }) {
   return (
     <div>
-        <ul>
-            {achs.map(ach => (
-                <li key={ach.id} onClick={() => handleClick(ach.id)}>{ach.title}</li>
-            )) }
-        </ul>
+      {achs
+        .sort((a, b) => {
+          return new Date(b.tstamp).getTime() - new Date(a.tstamp).getTime();
+        })
+        .map((ach) => (
+          <Card ach={ach} key={ach.id} />
+        ))}
     </div>
-  )
+  );
 }
