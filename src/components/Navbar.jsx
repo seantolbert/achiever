@@ -1,20 +1,44 @@
-import { Link } from 'react-router-dom'
-import { useLogout } from '../hooks/useLogout'
-
+import { Link } from "react-router-dom";
+import { useLogout } from "../hooks/useLogout";
+import {
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+  IconButton,
+} from "@chakra-ui/react";
+import { HamburgerIcon } from "@chakra-ui/icons";
 
 export default function Navbar() {
-    const {logout} = useLogout()
+  const { logout } = useLogout();
 
   return (
-    <nav>
-      <h1>My Reading List</h1>
-      <ul>
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/create">Create</Link></li>
-        <li><Link to="/login">Login</Link></li>
-        <li><Link to="/signup">Signup</Link></li>
-        <li onClick={logout}>Logout</li>
-      </ul>
-    </nav>
-  )
+    <Menu>
+      <MenuButton
+      role='button'
+        as={IconButton}
+        p={2}
+        aria-label="Options"
+        icon={<HamburgerIcon />}
+        variant="outline"
+      />
+      <MenuList>
+        <MenuItem>
+          <Link to="/">Home</Link>
+        </MenuItem>
+        <MenuItem>
+          <Link to="/create">Create</Link>
+        </MenuItem>
+        <MenuItem>
+          <Link to="/login">Login</Link>
+        </MenuItem>
+        <MenuItem>
+          <Link to="/signup">Signup</Link>
+        </MenuItem>
+        <MenuItem>
+          <span onClick={logout}>Logout</span>
+        </MenuItem>
+      </MenuList>
+    </Menu>
+  );
 }

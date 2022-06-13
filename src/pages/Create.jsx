@@ -4,19 +4,19 @@ import { useAuthContext } from "../hooks/useAuthContext";
 import { db } from "../firebase/config";
 import { addDoc, collection } from "firebase/firestore";
 
-import Select from "react-select";
+// import Select from "react-select";
 
-const categories = [
-  { value: "Course", label: "Course" },
-  { value: "Repo", label: "Repo" },
-  { value: "App", label: "App" },
-  { value: "Post", label: "Post" },
-];
+// const categories = [
+//   { value: "Course", label: "Course" },
+//   { value: "Repo", label: "Repo" },
+//   { value: "App", label: "App" },
+//   { value: "Post", label: "Post" },
+// ];
 
-const subcategories = [
-  { value: "udemy", label: "Udemy" },
-  { value: "youtube", label: "Youtube" },
-];
+// const subcategories = [
+//   { value: "udemy", label: "Udemy" },
+//   { value: "youtube", label: "Youtube" },
+// ];
 
 export default function Create() {
   const [title, setTitle] = useState("");
@@ -84,14 +84,14 @@ export default function Create() {
             value={tstamp}
           />
         </label>
-        <label>
+        {/* <label>
           <span>Category</span>
           <Select
             options={categories}
             onChange={(option) => setCategory(option)}
           />
         </label>
-        {category.value === "Course" && (
+        {category.value === "course" && (
           <label>
             <span>Course Source</span>
             <Select
@@ -99,7 +99,7 @@ export default function Create() {
               onChange={(option) => setSubcategory(option)}
             />
           </label>
-        )}
+        )} */}
         <button>Add</button>
       </form>
     </>
