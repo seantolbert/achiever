@@ -1,15 +1,9 @@
 import Card from "./Card";
-import { Grid } from "@chakra-ui/react";
 
 export default function AchList({ achs }) {
   return (
     <div>
-      <Grid
-        templateColumns="repeat(2, 1fr)"
-        templateRows="repeat(4, 1fr)"
-        gap={4}
-        h="400px"
-      >
+      <div className="my-4 grid md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-5 lg:gap-6">
         {achs
           .sort((a, b) => {
             return new Date(b.tstamp).getTime() - new Date(a.tstamp).getTime();
@@ -17,7 +11,7 @@ export default function AchList({ achs }) {
           .map((ach) => (
             <Card ach={ach} key={ach.id} />
           ))}
-      </Grid>
+      </div>
     </div>
   );
 }

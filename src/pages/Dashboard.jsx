@@ -26,6 +26,7 @@ export default function Dashboard() {
           case "Repo":
           case "App":
           case "Post":
+          case "Resource":
             console.log(achs.category, currentFilter);
             return ach.category === currentFilter;
           default:
@@ -36,7 +37,7 @@ export default function Dashboard() {
 
   return (
     <div>
-      <h1>Dashboard</h1>
+      <p className="text-3xl font-bold my-10">ACHIEVER</p>
       {achs && (
         <AchivementFilter
           currentFilter={currentFilter}

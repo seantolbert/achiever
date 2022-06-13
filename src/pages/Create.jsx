@@ -4,19 +4,15 @@ import { useAuthContext } from "../hooks/useAuthContext";
 import { db } from "../firebase/config";
 import { addDoc, collection } from "firebase/firestore";
 
-// import Select from "react-select";
+import Select from "react-select";
 
-// const categories = [
-//   { value: "Course", label: "Course" },
-//   { value: "Repo", label: "Repo" },
-//   { value: "App", label: "App" },
-//   { value: "Post", label: "Post" },
-// ];
-
-// const subcategories = [
-//   { value: "udemy", label: "Udemy" },
-//   { value: "youtube", label: "Youtube" },
-// ];
+const categories = [
+  { value: "Course", label: "Course" },
+  { value: "Repo", label: "Repo" },
+  { value: "App", label: "App" },
+  { value: "Post", label: "Post" },
+  { value: "Resource", label: "Resource" },
+];
 
 export default function Create() {
   const [title, setTitle] = useState("");
@@ -24,7 +20,6 @@ export default function Create() {
   const [hyplink, setHyplink] = useState("");
   const [tstamp, setTstamp] = useState("");
   const [category, setCategory] = useState("");
-  const [subcategory, setSubcategory] = useState("");
   const { user } = useAuthContext();
 
   const handleSubmit = async (e) => {
@@ -38,7 +33,6 @@ export default function Create() {
       hyplink,
       tstamp,
       category: category.value,
-      subcategory: subcategory.value,
       uid: user.uid,
     });
 
@@ -84,22 +78,13 @@ export default function Create() {
             value={tstamp}
           />
         </label>
-        {/* <label>
+        <label>
           <span>Category</span>
           <Select
             options={categories}
             onChange={(option) => setCategory(option)}
           />
         </label>
-        {category.value === "course" && (
-          <label>
-            <span>Course Source</span>
-            <Select
-              options={subcategories}
-              onChange={(option) => setSubcategory(option)}
-            />
-          </label>
-        )} */}
         <button>Add</button>
       </form>
     </>

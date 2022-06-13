@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useAuthContext } from "./hooks/useAuthContext";
 
 // pages + components
@@ -18,14 +18,26 @@ function App() {
     <div className="App">
       {authIsReady && (
         <BrowserRouter>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={ user && <Dashboard />} />
-          <Route path="/create" element={<Create />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-        </Routes>
-      </BrowserRouter>
+          {user && <Navbar />}
+          <Routes>
+            <Route
+              path="/"
+              element={user ? <Dashboard /> : <Navigate to="/" />}
+            />
+            <Route
+              path="/create"
+              element={user ? <Create /> : <Navigate to="/login" />}
+            />
+            <Route
+              path="/login"
+              element={!user ? <Login /> : <Navigate to="/" />}
+            />
+            <Route
+              path="/signup"
+              element={user ? <Signup /> : <Navigate to="/" />}
+            />
+          </Routes>
+        </BrowserRouter>
       )}
     </div>
   );
