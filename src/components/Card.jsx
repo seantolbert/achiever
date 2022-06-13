@@ -20,7 +20,7 @@ export default function Card({ ach }) {
   return (
     <>
       {ach.category === "Repo" && (
-        <div className="grid grid-rows-2 grid-cols-5 bg-gradient-to-r from-transparent to-cyan-500 mx-5 p-2 rounded-lg max-w-lg">
+        <div className="grid grid-rows-2 grid-cols-5 bg-gradient-to-r from-transparent to-cyan-500 mx-5 p-2 rounded-lg">
           <div className="flex w-full justify-center items-center w-10 text-5xl row-span-2">
             <FontAwesomeIcon icon={faGithub} />
           </div>
@@ -41,7 +41,7 @@ export default function Card({ ach }) {
         </div>
       )}
       {ach.category === "App" && (
-        <div className="grid grid-rows-2 grid-cols-5 bg-gradient-to-r from-transparent to-yellow-500 mx-5 p-2 rounded-lg max-w-lg">
+        <div className="grid grid-rows-2 grid-cols-5 bg-gradient-to-r from-transparent to-yellow-500 mx-5 p-2 rounded-lg">
           <div className="flex w-full justify-center items-center w-10 text-5xl row-span-2">
             <FontAwesomeIcon icon={faCrown} />
           </div>
@@ -62,7 +62,7 @@ export default function Card({ ach }) {
         </div>
       )}
       {ach.category === "Resource" && (
-        <div className="grid grid-rows-2 grid-cols-5 bg-gradient-to-r from-transparent to-purple-500 mx-5 p-2 rounded-lg max-w-lg">
+        <div className="grid grid-rows-2 grid-cols-5 bg-gradient-to-r from-transparent to-purple-500 mx-5 p-2 rounded-lg">
           <div className="flex w-full justify-center items-center w-10 text-5xl row-span-2">
             <FontAwesomeIcon icon={faScrewdriverWrench} />
           </div>
@@ -83,7 +83,7 @@ export default function Card({ ach }) {
         </div>
       )}
       {ach.category === "Course" && (
-        <div className="grid grid-rows-2 grid-cols-5 bg-gradient-to-r from-transparent to-lime-500 mx-5 p-2 rounded-lg max-w-lg">
+        <div className="grid grid-rows-2 grid-cols-5 bg-gradient-to-r from-transparent to-lime-500 mx-5 p-2 rounded-lg">
           <div className="flex w-full justify-center items-center w-10 text-5xl row-span-2">
             <FontAwesomeIcon icon={faLandmark} />
           </div>
@@ -109,7 +109,7 @@ export default function Card({ ach }) {
         </div>
       )}
       {ach.category === "Post" && (
-        <div className="grid grid-rows-2 grid-cols-5 bg-gradient-to-r from-transparent to-rose-500 mx-5 p-2 rounded-lg max-w-lg">
+        <div className="grid grid-rows-2 grid-cols-5 bg-gradient-to-r from-transparent to-rose-500 mx-5 p-2 rounded-lg">
           <div className="flex w-full justify-center items-center w-10 text-5xl row-span-2">
             <FontAwesomeIcon icon={faUser} />
           </div>

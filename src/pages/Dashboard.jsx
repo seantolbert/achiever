@@ -16,7 +16,7 @@ export default function Dashboard() {
   const changeFilter = (newFilter) => {
     setCurrentFilter(newFilter);
   };
-  console.log(currentFilter);
+  
   const achievements = achs
     ? achs.filter((ach) => {
         switch (currentFilter) {
@@ -27,7 +27,6 @@ export default function Dashboard() {
           case "App":
           case "Post":
           case "Resource":
-            console.log(achs.category, currentFilter);
             return ach.category === currentFilter;
           default:
             return true;
