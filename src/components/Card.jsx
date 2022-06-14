@@ -20,7 +20,7 @@ export default function Card({ ach }) {
   return (
     <>
       {ach.category === "Repo" && (
-        <div className="grid grid-rows-2 grid-cols-5 bg-gradient-to-r from-transparent to-cyan-500 mx-5 p-2 rounded-lg">
+        <div className="grid grid-rows-2 grid-cols-5 bg-gradient-to-r from-transparent to-cyan-500 mx-5 p-2 rounded-lg ">
           <div className="flex w-full justify-center items-center w-10 text-5xl row-span-2">
             <FontAwesomeIcon icon={faGithub} />
           </div>
@@ -109,7 +109,7 @@ export default function Card({ ach }) {
         </div>
       )}
       {ach.category === "Post" && (
-        <div className="grid grid-rows-2 grid-cols-5 bg-gradient-to-r from-transparent to-rose-500 mx-5 p-2 rounded-lg">
+        <div className="grid grid-rows-2 grid-cols-5 bg-gradient-to-r from-transparent to-rose-500 mx-5 p-2 rounded-lg transition duration-300 hover:shadow-hoverRoseShadow">
           <div className="flex w-full justify-center items-center w-10 text-5xl row-span-2">
             <FontAwesomeIcon icon={faUser} />
           </div>

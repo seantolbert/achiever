@@ -43,49 +43,120 @@ export default function Create() {
     setCategory("");
   };
 
+  const customSelect = {
+    option: (state, provided) => ({
+      ...provided,
+      color: "#f59e0b",
+      padding: "12px",
+      boxShadow: state.isSelected
+        ? "5px 5px 10px #494949, -5px -5px 10px #a7a7a7"
+        : "",
+    }),
+    control: (provided) => ({
+      ...provided,
+      background: "#787878",
+      border: "none",
+      boxShadow: "5px 5px 10px #494949, -5px -5px 10px #a7a7a7",
+      caretColor: "#f59e0b",
+    }),
+    container: (provided) => ({
+      ...provided,
+      width: "100%",
+    }),
+    indicatorsContainer: (provided) => ({
+      ...provided,
+      color: "#f59e0b",
+    }),
+    valueContainer: (provided) => ({
+      ...provided,
+      padding: "12px",
+    }),
+    menu: (provided) => ({
+      ...provided,
+      background: "#787878",
+      boxShadow: "inset 5px 5px 10px #494949, inset -5px -5px 10px #a7a7a7",
+      borderRadius: "12px",
+    }),
+    placeholder: (provided) => ({
+      ...provided,
+      color: "#f59e0b",
+      textAlign: "left",
+    }),
+    indicatorSeparator: (provided) => ({
+      ...provided,
+      display: "none",
+    }),
+    singleValue: (provided) => ({
+      ...provided,
+      color: "#f59e0b",
+    }),
+  };
+
   return (
     <>
-      <h1>Create</h1>
-      <form onSubmit={handleSubmit}>
+      <p className="text-amber-500 text-5xl my-20">Create</p>
+      <form onSubmit={handleSubmit} className="flex flex-col gap-7 px-10">
         <label>
-          <span>Link</span>
-          <input
-            type="text"
-            onChange={(e) => setHyplink(e.target.value)}
-            value={hyplink}
-          />
-        </label>
-        <label>
-          <span>Title</span>
-          <input
-            type="text"
-            onChange={(e) => setTitle(e.target.value)}
-            value={title}
-          />
-        </label>
-        <label>
-          <span>Details</span>
-          <textarea
-            onChange={(e) => setDetails(e.target.value)}
-            value={details}
-          />
-        </label>
-        <label>
-          <span>Date</span>
-          <input
-            type="datetime-local"
-            onChange={(e) => setTstamp(e.target.value)}
-            value={tstamp}
-          />
-        </label>
-        <label>
-          <span>Category</span>
           <Select
             options={categories}
             onChange={(option) => setCategory(option)}
+            styles={customSelect}
           />
         </label>
-        <button>Add</button>
+        {category.value && (
+          <>
+            <label className="text-left">
+              <span className="font-bold text-amber-300">
+                Where can we find this {category.value}?
+              </span>
+              <input
+                className="w-full rounded-md p-2 pl-3 text-lg bg-dark active:shadow-neu focus:shadow-neu active:placeholder:text-white focus:placeholder:text-white text-amber-500 placeholder:text-amber-500 caret-amber-500"
+                type="text"
+                onChange={(e) => setHyplink(e.target.value)}
+                value={hyplink}
+                placeholder="link"
+              />
+            </label>
+            <label className="text-left">
+              <span className="font-bold text-amber-300">
+                What do we want to call this {category.value}?
+              </span>
+              <input
+                className="w-full rounded-md p-2 pl-3 text-lg bg-dark active:shadow-neu focus:shadow-neu active:placeholder:text-white focus:placeholder:text-white text-amber-500 placeholder:text-amber-500 caret-amber-500"
+                type="text"
+                onChange={(e) => setTitle(e.target.value)}
+                value={title}
+                placeholder="title"
+              />
+            </label>
+            <label className="text-left w-3/5">
+              <span className="text-left font-bold text-amber-300">
+                When did this happen?
+              </span>
+              <input
+                className="rounded-md p-2 pl-3 text-lg bg-transparent active:shadow-neu focus:shadow-neu active:placeholder:text-white focus:placeholder:text-white text-amber-500 placeholder:text-amber-500 caret-amber-500"
+                type="date"
+                onChange={(e) => setTstamp(e.target.value)}
+                value={tstamp}
+                placeholder="when?"
+              />
+            </label>
+            <label className="text-left h-fit">
+              <span className="text-amber-300 font-bold">
+                Would a description come in handy?
+              </span>
+              <textarea
+                className="peer w-full rounded-md p-2 pl-3 text-lg bg-transparent active:shadow-neu focus:shadow-neu active:placeholder:text-white focus:placeholder:text-white text-amber-500 placeholder:text-amber-500 caret-amber-500"
+                onChange={(e) => setDetails(e.target.value)}
+                value={details}
+                placeholder="thoughts?"
+              />
+            </label>
+            <button className="font-bold transition duration-500 rounded-lg p-3 text-amber-500 shadow-neu active:shadow-pressedNeu text-xl w-1/3 self-end">
+              Add
+            </button>
+          </>
+        )}
       </form>
     </>
   );

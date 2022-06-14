@@ -13,13 +13,13 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="flex justify-end z-200" role="navigation">
+      <nav className="flex justify-end z-200 text-white" role="navigation">
         <div className="transition duration-500 bg-lightGrey flex gap-4 justify-center items-center fixed top-full height-screen h-fit w-fit rounded-full p-5 -translate-y-20">
           <label
             htmlFor="checker"
             className="absolute peer-checked:hidden flex justify-start items-center bg-black rounded-full p-6 translate-x-6"
           >
-            <FontAwesomeIcon icon={faBars} className="-translate-x-5"/>
+            <FontAwesomeIcon icon={faBars} className="-translate-x-5" />
           </label>
           <input
             id="checker"
@@ -39,7 +39,7 @@ export default function Navbar() {
           >
             <FontAwesomeIcon icon={faCirclePlus} />
           </Link>
-          <span className="flex justify-center items-center text-light text-2xl bg-black rounded-full h-14 w-14 absolute transition duration-300 -translate-y-52 translate-x-52 peer-checked:translate-x-0" >
+          <span className="flex justify-center items-center text-light text-2xl bg-black rounded-full h-14 w-14 absolute transition duration-300 -translate-y-52 translate-x-52 peer-checked:translate-x-0">
             <FontAwesomeIcon icon={faRightFromBracket} onClick={logout} />
           </span>
         </div>

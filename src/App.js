@@ -15,7 +15,7 @@ function App() {
   const { user, authIsReady } = useAuthContext();
 
   return (
-    <div className="App">
+    <div className="App h-screen">
       {authIsReady && (
         <BrowserRouter>
           {user && <Navbar />}
