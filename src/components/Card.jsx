@@ -2,7 +2,7 @@ import { doc, deleteDoc } from "firebase/firestore";
 import { db } from "../firebase/config";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faXmark,
+  faCircleXmark,
   faArrowUpRightFromSquare,
   faScrewdriverWrench,
   faCrown,
@@ -30,7 +30,7 @@ export default function Card({ ach }) {
             <span className="text-sm">{ach.tstamp}</span>
           </div>
           <div className="flex justify-center items-center cursor-pointer">
-            <FontAwesomeIcon icon={faXmark} onClick={() => handleClick(ach.id)} className="border-2 rounded-full p-1"/>
+            <FontAwesomeIcon icon={faCircleXmark} onClick={() => handleClick(ach.id)}/>
           </div>
           <div className=" text-sm flex text-left items-start col-span-3">
             {ach.details}
@@ -51,7 +51,7 @@ export default function Card({ ach }) {
             <span className="text-sm">{ach.tstamp}</span>
           </div>
           <div className="flex justify-center items-center cursor-pointer">
-            <FontAwesomeIcon icon={faXmark} onClick={() => handleClick(ach.id)} className="border-2 rounded-full p-1" />
+            <FontAwesomeIcon icon={faCircleXmark} onClick={() => handleClick(ach.id)} />
           </div>
           <div className=" text-sm flex text-left items-start col-span-3">
             {ach.details}
@@ -72,7 +72,7 @@ export default function Card({ ach }) {
             <span className="text-sm">{ach.tstamp}</span>
           </div>
           <div className="flex justify-center items-center cursor-pointer">
-            <FontAwesomeIcon icon={faXmark} onClick={() => handleClick(ach.id)} className="border-2 rounded-full p-1" />
+            <FontAwesomeIcon icon={faCircleXmark} onClick={() => handleClick(ach.id)} />
           </div>
           <div className=" text-sm flex text-left items-start col-span-3">
             {ach.details}
@@ -93,7 +93,7 @@ export default function Card({ ach }) {
             <span className="text-sm">{ach.tstamp}</span>
           </div>
           <div className="flex justify-center items-center cursor-pointer">
-            <FontAwesomeIcon icon={faXmark} onClick={() => handleClick(ach.id)} className="border-2 rounded-full p-1" />
+            <FontAwesomeIcon icon={faCircleXmark} onClick={() => handleClick(ach.id)} />
           </div>
           <div className=" text-sm flex text-left items-start col-span-3">
             {ach.details}
@@ -119,7 +119,7 @@ export default function Card({ ach }) {
             <span className="text-sm">{ach.tstamp}</span>
           </div>
           <div className="flex justify-center items-center cursor-pointer">
-            <FontAwesomeIcon icon={faXmark} onClick={() => handleClick(ach.id)} className="border-2 rounded-full p-1"/>
+            <FontAwesomeIcon icon={faCircleXmark} onClick={() => handleClick(ach.id)}/>
           </div>
           <div className=" text-sm flex text-left items-start col-span-3">
             {ach.details}

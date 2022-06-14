@@ -9,18 +9,12 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: linear-gradient(180deg, rgba(120,120,120,1) 54%, rgba(245,158,11,1) 100%);
+  background: #303030;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
-}
-
-select,
-input,
-textarea {
-  color: rgb(93, 93, 93);
 }
 
 * {

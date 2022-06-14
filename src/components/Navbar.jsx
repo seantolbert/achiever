@@ -19,7 +19,7 @@ export default function Navbar() {
             htmlFor="checker"
             className="absolute peer-checked:hidden flex justify-start items-center bg-black rounded-full p-6 translate-x-6"
           >
-            <FontAwesomeIcon icon={faBars} className="-translate-x-5" />
+            <FontAwesomeIcon icon={faBars} className="-translate-x-4" />
           </label>
           <input
             id="checker"

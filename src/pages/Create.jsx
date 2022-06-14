@@ -49,14 +49,14 @@ export default function Create() {
       color: "#f59e0b",
       padding: "12px",
       boxShadow: state.isSelected
-        ? "5px 5px 10px #494949, -5px -5px 10px #a7a7a7"
+        ? "5px 5px 10px #1d1d1d, -5px -5px 10px #434343"
         : "",
     }),
     control: (provided) => ({
       ...provided,
-      background: "#787878",
+      background: "transparent",
       border: "none",
-      boxShadow: "5px 5px 10px #494949, -5px -5px 10px #a7a7a7",
+      boxShadow: "5px 5px 10px #1d1d1d, -5px -5px 10px #434343",
       caretColor: "#f59e0b",
     }),
     container: (provided) => ({
@@ -73,8 +73,8 @@ export default function Create() {
     }),
     menu: (provided) => ({
       ...provided,
-      background: "#787878",
-      boxShadow: "inset 5px 5px 10px #494949, inset -5px -5px 10px #a7a7a7",
+      background: "transparent",
+      boxShadow: "inset 5px 5px 10px #1d1d1d, inset -5px -5px 10px #434343",
       borderRadius: "12px",
     }),
     placeholder: (provided) => ({
@@ -110,7 +110,7 @@ export default function Create() {
                 Where can we find this {category.value}?
               </span>
               <input
-                className="w-full rounded-md p-2 pl-3 text-lg bg-dark active:shadow-neu focus:shadow-neu active:placeholder:text-white focus:placeholder:text-white text-amber-500 placeholder:text-amber-500 caret-amber-500"
+                className="mt-3 w-full rounded-md p-2 pl-3 text-lg bg-transparent active:shadow-neu focus:shadow-neu active:placeholder:text-white focus:placeholder:text-white text-amber-500 placeholder:text-amber-500 caret-amber-500"
                 type="text"
                 onChange={(e) => setHyplink(e.target.value)}
                 value={hyplink}
@@ -122,7 +122,7 @@ export default function Create() {
                 What do we want to call this {category.value}?
               </span>
               <input
-                className="w-full rounded-md p-2 pl-3 text-lg bg-dark active:shadow-neu focus:shadow-neu active:placeholder:text-white focus:placeholder:text-white text-amber-500 placeholder:text-amber-500 caret-amber-500"
+                className="mt-3 w-full rounded-md p-2 pl-3 text-lg bg-transparent active:shadow-neu focus:shadow-neu active:placeholder:text-white focus:placeholder:text-white text-amber-500 placeholder:text-amber-500 caret-amber-500"
                 type="text"
                 onChange={(e) => setTitle(e.target.value)}
                 value={title}
@@ -134,7 +134,7 @@ export default function Create() {
                 When did this happen?
               </span>
               <input
-                className="rounded-md p-2 pl-3 text-lg bg-transparent active:shadow-neu focus:shadow-neu active:placeholder:text-white focus:placeholder:text-white text-amber-500 placeholder:text-amber-500 caret-amber-500"
+                className="mt-3 rounded-md p-2 pl-3 text-lg bg-transparent active:shadow-neu focus:shadow-neu active:placeholder:text-white focus:placeholder:text-white text-amber-500 placeholder:text-amber-500 caret-amber-500"
                 type="date"
                 onChange={(e) => setTstamp(e.target.value)}
                 value={tstamp}
@@ -146,7 +146,7 @@ export default function Create() {
                 Would a description come in handy?
               </span>
               <textarea
-                className="peer w-full rounded-md p-2 pl-3 text-lg bg-transparent active:shadow-neu focus:shadow-neu active:placeholder:text-white focus:placeholder:text-white text-amber-500 placeholder:text-amber-500 caret-amber-500"
+                className="mt-3 peer w-full rounded-md p-2 pl-3 text-lg bg-transparent active:shadow-neu focus:shadow-neu active:placeholder:text-white focus:placeholder:text-white text-amber-500 placeholder:text-amber-500 caret-amber-500"
                 onChange={(e) => setDetails(e.target.value)}
                 value={details}
                 placeholder="thoughts?"

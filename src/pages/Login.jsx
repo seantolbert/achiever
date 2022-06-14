@@ -14,7 +14,7 @@ export default function Login() {
 
   return (
     <div className="h-screen flex flex-col justify-center items-center">
-      <h2 className="text-4xl mb-5">Login</h2>
+      <h2 className="text-4xl mb-5 text-white font-bold">Login</h2>
       <form onSubmit={handleSubmit} className="flex flex-col gap-6">
         <input
           required
@@ -22,7 +22,7 @@ export default function Login() {
           onChange={(e) => setEmail(e.target.value)}
           value={email}
           placeholder="email"
-          className="p-2 rounded-md text-gray-600"
+          className="p-2 rounded-md text-amber-500 caret-amber-500 bg-transparent shadow-neu focus:shadow-pressedNeu active:shadow-pressedNeu placeholder:text-amber-300"
           />
 
         <input
@@ -31,12 +31,12 @@ export default function Login() {
           onChange={(e) => setPassword(e.target.value)}
           value={password}
           placeholder="password"
-          className="p-2 rounded-md text-gray-600"
+          className="p-2 rounded-md text-amber-500 caret-amber-500 bg-transparent shadow-neu focus:shadow-pressedNeu active:shadow-pressedNeu placeholder:text-amber-300"
         />
 
-        <button>log in</button>
+        <button className="rounded-md self-center text-amber-500 font-bold p-2 w-2/5 bg-transparent shadow-neu active:shadow-pressedNeu focus:shadowpressedNeu">log in</button>
         {error && <p>{error}</p>}
-        <div>Don't have an account yet? <Link to="/signup" className="text-teal-300">Sign up here</Link></div>
+        <div className="text-white">Don't have an account yet? <Link to="/signup" className="text-amber-300">Sign up here</Link></div>
       </form>
     </div>
   );

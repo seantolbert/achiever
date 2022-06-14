@@ -35,7 +35,7 @@ export default function Dashboard() {
     : null;
 
   return (
-    <div>
+    <div className="text-white">
       <p className="text-3xl font-bold my-10">ACHIEVER</p>
       {achs && (
         <AchivementFilter
