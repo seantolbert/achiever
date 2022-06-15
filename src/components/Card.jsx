@@ -19,14 +19,15 @@ import {
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
 export default function Card({ ach }) {
-  const callback = useCallback(async (id) => {
-    console.log("successful deletion", id);
+  const callback = useCallback(async (e) => {
+    console.dir(e);
   }, []);
 
   const bind = useLongPress(callback, {
     threshold: 600,
     captureEvent: true,
-    cancelOnMovement: false
+    cancelOnMovement: false,
+    detect: 'both',
   });
   
   const handleClick = async (id) => {
@@ -67,8 +68,8 @@ export default function Card({ ach }) {
           <span className="text-sm">{ach.tstamp}</span>
         </div>
         <button
-          {...bind()}
-          id="trigger"
+          {...bind(ach)}
+          id={ach.id}
           className="flex justify-center items-center cursor-pointer text-2xl"
           onClick={() => handleClick(ach.id)}
         >
