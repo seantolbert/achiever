@@ -1,5 +1,12 @@
+// hooks
+import { useLongPress } from "use-long-press";
+import { useCallback } from "react";
+
+// firebase
 import { doc, deleteDoc } from "firebase/firestore";
 import { db } from "../firebase/config";
+
+// font-awesome icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCircleXmark,
@@ -12,123 +19,71 @@ import {
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
 export default function Card({ ach }) {
+  const callback = useCallback(async (id) => {
+    console.log("successful deletion", id);
+  }, []);
+
+  const bind = useLongPress(callback, {
+    threshold: 600,
+    captureEvent: true,
+    cancelOnMovement: false
+  });
+  
   const handleClick = async (id) => {
-    const docRef = doc(db, "achievements", id);
-    await deleteDoc(docRef);
+    // const docRef = doc(db, "achievements", id);
+    // await deleteDoc(docRef);
+    // console.log(id)
   };
 
   return (
     <>
-      {ach.category === "Repo" && (
-        <div className="grid grid-rows-2 grid-cols-5 bg-gradient-to-r from-transparent to-cyan-500 mx-5 p-2 rounded-lg ">
-          <div className="flex w-full justify-center items-center w-10 text-5xl row-span-2">
-            <FontAwesomeIcon icon={faGithub} />
-          </div>
-
-          <div className="flex items-start flex-col col-span-3">
-            <span className="text-2xl">{ach.title}</span>
-            <span className="text-sm">{ach.tstamp}</span>
-          </div>
-          <div className="flex justify-center items-center cursor-pointer">
-            <FontAwesomeIcon icon={faCircleXmark} onClick={() => handleClick(ach.id)}/>
-          </div>
-          <div className=" text-sm flex text-left items-start col-span-3">
-            {ach.details}
-          </div>
-          <a className="flex justify-center items-center" href={ach.hyplink}>
-            <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
-          </a>
-        </div>
-      )}
-      {ach.category === "App" && (
-        <div className="grid grid-rows-2 grid-cols-5 bg-gradient-to-r from-transparent to-yellow-500 mx-5 p-2 rounded-lg">
-          <div className="flex w-full justify-center items-center w-10 text-5xl row-span-2">
-            <FontAwesomeIcon icon={faCrown} />
-          </div>
-
-          <div className="flex items-start flex-col col-span-3">
-            <span className="text-2xl">{ach.title}</span>
-            <span className="text-sm">{ach.tstamp}</span>
-          </div>
-          <div className="flex justify-center items-center cursor-pointer">
-            <FontAwesomeIcon icon={faCircleXmark} onClick={() => handleClick(ach.id)} />
-          </div>
-          <div className=" text-sm flex text-left items-start col-span-3">
-            {ach.details}
-          </div>
-          <a className="flex justify-center items-center" href={ach.hyplink}>
-            <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
-          </a>
-        </div>
-      )}
-      {ach.category === "Resource" && (
-        <div className="grid grid-rows-2 grid-cols-5 bg-gradient-to-r from-transparent to-purple-500 mx-5 p-2 rounded-lg">
-          <div className="flex w-full justify-center items-center w-10 text-5xl row-span-2">
+      <div
+        className={`grid grid-rows-2 grid-cols-5 mx-5 p-2 rounded-lg bg-gradient-to-r from-transparent ${
+          ach.category === "Repo"
+            ? "to-cyan-500"
+            : ach.category === "Course"
+            ? "to-yellow-500"
+            : ach.category === "App"
+            ? "to-rose-500"
+            : ach.category === "Resource"
+            ? "to-purple-500"
+            : ach.category === "Post"
+            ? "to-lime-500"
+            : ""
+        }  `}
+      >
+        <div className="flex w-full justify-center items-center w-10 text-5xl row-span-2">
+          {ach.category === "Repo" && <FontAwesomeIcon icon={faGithub} />}
+          {ach.category === "Course" && <FontAwesomeIcon icon={faLandmark} />}
+          {ach.category === "App" && <FontAwesomeIcon icon={faCrown} />}
+          {ach.category === "Resource" && (
             <FontAwesomeIcon icon={faScrewdriverWrench} />
-          </div>
-
-          <div className="flex items-start flex-col col-span-3">
-            <span className="text-2xl">{ach.title}</span>
-            <span className="text-sm">{ach.tstamp}</span>
-          </div>
-          <div className="flex justify-center items-center cursor-pointer">
-            <FontAwesomeIcon icon={faCircleXmark} onClick={() => handleClick(ach.id)} />
-          </div>
-          <div className=" text-sm flex text-left items-start col-span-3">
-            {ach.details}
-          </div>
-          <a className="flex justify-center items-center" href={ach.hyplink}>
-            <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
-          </a>
+          )}
+          {ach.category === "Post" && <FontAwesomeIcon icon={faUser} />}
         </div>
-      )}
-      {ach.category === "Course" && (
-        <div className="grid grid-rows-2 grid-cols-5 bg-gradient-to-r from-transparent to-lime-500 mx-5 p-2 rounded-lg">
-          <div className="flex w-full justify-center items-center w-10 text-5xl row-span-2">
-            <FontAwesomeIcon icon={faLandmark} />
-          </div>
 
-          <div className="flex items-start flex-col col-span-3">
-            <span className="text-2xl">{ach.title}</span>
-            <span className="text-sm">{ach.tstamp}</span>
-          </div>
-          <div className="flex justify-center items-center cursor-pointer">
-            <FontAwesomeIcon icon={faCircleXmark} onClick={() => handleClick(ach.id)} />
-          </div>
-          <div className=" text-sm flex text-left items-start col-span-3">
-            {ach.details}
-          </div>
-          <a
-            className="flex justify-center items-center"
-            rel="noreferrer"
-            target="_blank"
-            href={ach.hyplink}
-          >
-            <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
-          </a>
+        <div className="flex items-start flex-col col-span-3">
+          <span className="text-2xl">{ach.title}</span>
+          <span className="text-sm">{ach.tstamp}</span>
         </div>
-      )}
-      {ach.category === "Post" && (
-        <div className="grid grid-rows-2 grid-cols-5 bg-gradient-to-r from-transparent to-rose-500 mx-5 p-2 rounded-lg transition duration-300 hover:shadow-hoverRoseShadow">
-          <div className="flex w-full justify-center items-center w-10 text-5xl row-span-2">
-            <FontAwesomeIcon icon={faUser} />
-          </div>
-
-          <div className="flex items-start flex-col col-span-3">
-            <span className="text-2xl">{ach.title}</span>
-            <span className="text-sm">{ach.tstamp}</span>
-          </div>
-          <div className="flex justify-center items-center cursor-pointer">
-            <FontAwesomeIcon icon={faCircleXmark} onClick={() => handleClick(ach.id)}/>
-          </div>
-          <div className=" text-sm flex text-left items-start col-span-3">
-            {ach.details}
-          </div>
-          <a className="flex justify-center items-center" href={ach.hyplink}>
-            <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
-          </a>
+        <button
+          {...bind()}
+          id="trigger"
+          className="flex justify-center items-center cursor-pointer text-2xl"
+          onClick={() => handleClick(ach.id)}
+        >
+          <FontAwesomeIcon icon={faCircleXmark} />
+        </button>
+        <div className=" text-sm flex text-left items-start col-span-3">
+          {ach.details}
         </div>
-      )}
+        <a
+          className="flex justify-center items-center text-xl"
+          href={ach.hyplink}
+        >
+          <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
+        </a>
+      </div>
     </>
   );
 }
