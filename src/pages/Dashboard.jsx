@@ -36,7 +36,7 @@ export default function Dashboard() {
 
   return (
     <div className="text-white">
-      <p className="text-3xl font-bold my-10">ACHIEVER</p>
+      <p className="text-5xl font-bold my-10 text-amber-300 border-l-4 border-b-4 w-fit pl-2 mx-2">ACHIEVER</p>
       {achs && (
         <AchivementFilter
           currentFilter={currentFilter}

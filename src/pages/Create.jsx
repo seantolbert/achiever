@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useAuthContext } from "../hooks/useAuthContext";
+import { useNavigate } from "react-router-dom";
 
 import { db } from "../firebase/config";
 import { addDoc, collection } from "firebase/firestore";
@@ -21,6 +22,7 @@ export default function Create() {
   const [tstamp, setTstamp] = useState("");
   const [category, setCategory] = useState("");
   const { user } = useAuthContext();
+  const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -36,6 +38,7 @@ export default function Create() {
       uid: user.uid,
     });
 
+    navigate('/')
     setTitle("");
     setDetails("");
     setHyplink("");

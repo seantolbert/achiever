@@ -12,7 +12,7 @@ export default function AchivementFilter({ currentFilter, changeFilter }) {
           <button
             key={f}
             onClick={() => handleClick(f)}
-            className={` mx-3 rounded-md ${currentFilter === f ? "underline underline-offset-8" : ""}`}
+            className={` mx-2 rounded-md font-bold ${currentFilter === f ? "border-b-4 border-amber-500 text-amber-300" : ""}`}
           >
             {f}
           </button>
