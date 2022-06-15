@@ -39,13 +39,36 @@ export default function Card({ ach }) {
         }  `}
       >
         <div className="flex w-full justify-center items-center text-5xl row-span-2 p-2">
-          {ach.category === "Repo" && <FontAwesomeIcon icon={faGithub} />}
-          {ach.category === "Course" && <FontAwesomeIcon icon={faLandmark} />}
-          {ach.category === "App" && <FontAwesomeIcon icon={faCrown} />}
-          {ach.category === "Resource" && (
-            <FontAwesomeIcon icon={faScrewdriverWrench} />
+          {ach.category === "Repo" && (
+            <FontAwesomeIcon
+              icon={faGithub}
+              className="shadow-neu rounded-full p-3"
+            />
           )}
-          {ach.category === "Post" && <FontAwesomeIcon icon={faUser} />}
+          {ach.category === "Course" && (
+            <FontAwesomeIcon
+              icon={faLandmark}
+              className="shadow-neu rounded-full p-3"
+            />
+          )}
+          {ach.category === "App" && (
+            <FontAwesomeIcon
+              icon={faCrown}
+              className="shadow-neu rounded-full p-3"
+            />
+          )}
+          {ach.category === "Resource" && (
+            <FontAwesomeIcon
+              icon={faScrewdriverWrench}
+              className="shadow-neu rounded-full p-3"
+            />
+          )}
+          {ach.category === "Post" && (
+            <FontAwesomeIcon
+              icon={faUser}
+              className="shadow-neu rounded-full p-3"
+            />
+          )}
         </div>
 
         <div className={`flex items-start flex-col col-span-3 `}>
@@ -57,7 +80,10 @@ export default function Card({ ach }) {
           className="flex justify-center items-center cursor-pointer text-2xl"
           onClick={() => handleClick(ach.id)}
         >
-          <FontAwesomeIcon icon={faCircleXmark} />
+          <FontAwesomeIcon
+            icon={faCircleXmark}
+            className="shadow-neu rounded-full p-1"
+          />
         </button>
 
         <div className=" text-sm flex text-left items-start col-span-3">
@@ -67,7 +93,10 @@ export default function Card({ ach }) {
           className="flex justify-center items-center text-xl"
           href={ach.hyplink}
         >
-          <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
+          <FontAwesomeIcon
+            icon={faArrowUpRightFromSquare}
+            className="shadow-neu rounded-full p-2"
+          />
         </a>
       </div>
     </>
